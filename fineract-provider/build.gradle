@@ -36,10 +36,12 @@ buildscript {
      classpath 'org.apache.openjpa:openjpa-all:2.4.1'
      classpath 'at.schmutterer.oss.gradle:gradle-openjpa:0.2.0'
      classpath 'gradle.plugin.org.nosphere.apache:creadur-rat-gradle:0.2.2'
+     classpath "org.sonarsource.scanner.gradle:sonarqube-gradle-plugin:2.2"
   }
 }
 
 apply plugin: "org.nosphere.apache.rat"
+apply plugin: "org.sonarqube"
 apply plugin: 'rebel'
 apply plugin: 'license'
 apply plugin: 'war'
