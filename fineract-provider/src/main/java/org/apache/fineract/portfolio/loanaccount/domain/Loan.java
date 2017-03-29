@@ -862,7 +862,11 @@ public class Loan extends AbstractPersistableCustom<Long> {
             break;
             case PERCENT_OF_AMOUNT_AND_INTEREST:
                 final BigDecimal totalInterestCharged = getTotalInterest();
-                amount = getPrincpal().getAmount().add(totalInterestCharged);
+                if (isMultiDisburmentLoan() && loanCharge.isDisbursementCharge()) {
+                    amount = getTotalAllTrancheDisbursementAmount().getAmount().add(totalInterestCharged);
+                }else{
+                    amount = getPrincpal().getAmount().add(totalInterestCharged);
+                }
             break;
             case PERCENT_OF_INTEREST:
                 amount = getTotalInterest();
@@ -878,6 +882,31 @@ public class Loan extends AbstractPersistableCustom<Long> {
             break;
         }
         return amount;
+    }
+
+    private Money getTotalAllTrancheDisbursementAmount() {
+        Money amount = Money.zero(getCurrency());
+        if (isMultiDisburmentLoan()) {
+            for (final LoanDisbursementDetails loanDisbursementDetail : this.disbursementDetails) {
+                amount = amount.plus(loanDisbursementDetail.principal());
+            }
+        }
+        return amount;
+    }
+
+    private boolean isFirstTrancheDisbursement() {
+        if (isMultiDisburmentLoan()) {
+            int totalTranchDisbursementCount = 0;
+            for (final LoanDisbursementDetails loanDisbursementDetail : this.disbursementDetails) {
+                if(loanDisbursementDetail.actualDisbursementDate() != null){
+                    totalTranchDisbursementCount++;
+                }
+            }
+            if(totalTranchDisbursementCount < 2){
+                return true;
+            }
+        }
+        return false;
     }
 
     /**
@@ -4706,8 +4735,8 @@ public class Loan extends AbstractPersistableCustom<Long> {
         return loanCharges;
     }
 
-    public Set<LoanInstallmentCharge> generateInstallmentLoanCharges(final LoanCharge loanCharge) {
-        final Set<LoanInstallmentCharge> loanChargePerInstallments = new HashSet<>();
+    public List<LoanInstallmentCharge> generateInstallmentLoanCharges(final LoanCharge loanCharge) {
+        final List<LoanInstallmentCharge> loanChargePerInstallments = new ArrayList<>();
         if (loanCharge.isInstalmentFee()) {
             List<LoanRepaymentScheduleInstallment> installments = getRepaymentScheduleInstallments() ;
             for (final LoanRepaymentScheduleInstallment installment : installments) {
@@ -5070,11 +5099,11 @@ public class Loan extends AbstractPersistableCustom<Long> {
         this.interestRecalculatedOn = DateUtils.getDateOfTenant();
         LocalDate lastRepaymentDate = this.getLastRepaymentPeriodDueDate(true);
         Set<LoanCharge> charges = this.charges();
-        for (LoanCharge loanCharge : charges) {
+        for (final LoanCharge loanCharge : charges) {
             if (!loanCharge.isDueAtDisbursement()) {
                 updateOverdueScheduleInstallment(loanCharge);
                 if (loanCharge.getDueLocalDate() == null || (!lastRepaymentDate.isBefore(loanCharge.getDueLocalDate()))) {
-                    if (!loanCharge.isWaived()
+                    if ((loanCharge.isInstalmentFee() || !loanCharge.isWaived())
                             && (loanCharge.getDueLocalDate() == null || !lastTransactionDate.isAfter(loanCharge.getDueLocalDate()))) {
                         recalculateLoanCharge(loanCharge, generatorDTO.getPenaltyWaitPeriod());
                         loanCharge.updateWaivedAmount(getCurrency());
