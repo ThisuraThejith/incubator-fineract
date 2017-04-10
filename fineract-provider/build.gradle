@@ -119,7 +119,10 @@ rat {
     '**/native/**',
     '**/wrapper/**',
 	'**/build/**',
-	
+    '**/.sonarlint/**',
+    '**/sonar-project.properties/**',
+    '**/sonarlint.json/**',
+	'**/.scannerwork/**',
 	//Api Docs 
 	'**/api-docs/*.*',
 	'**/docs/system-architecture/.htaccess',
