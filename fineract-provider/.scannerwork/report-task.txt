@@ -1,0 +1,5 @@
+projectKey=org.apache.fineract:fineract-provider
+serverUrl=http://localhost:8585/sonar
+dashboardUrl=http://localhost:8585/sonar/dashboard/index/org.apache.fineract:fineract-provider
+ceTaskId=AVtNYpmUHQoAmgOkua0O
+ceTaskUrl=http://localhost:8585/sonar/api/ce/task?id=AVtNYpmUHQoAmgOkua0O

@@ -1,0 +1,11 @@
+<!doctype html><html><head><link href="rule.css" rel="stylesheet" type="text/css" /></head><body><h1><big>"strict" mode should be used with caution</big> (javascript:StrictMode)</h1><div class="rule-desc"><p>
+  Even thought it may be a good practice to enforce JavaScript strict mode, doing so could result in unexpected behaviors on browsers that do not support it yet. Using this feature should therefore be done with caution and with full knowledge of the potential consequences on browsers that do not support it.
+</p>
+
+<h2>Noncompliant Code Example</h2>
+
+<pre>
+function strict() {
+  'use strict';
+}
+</pre></div></body></html>

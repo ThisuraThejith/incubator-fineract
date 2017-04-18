@@ -1,0 +1,9 @@
+{
+  "servers": [
+    {
+      "id": "local",
+      "url": "http://localhost:8585/sonar",
+      "token": "bf31a546332ab29e5fdc8a47902b1b83fe17115a"
+    }
+  ]
+}
