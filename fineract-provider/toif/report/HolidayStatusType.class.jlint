@@ -1,0 +1,3 @@
+java/lang/Integer.java:1: equals() was overridden but not hashCode().
+/home/chamarap/Desktop/docs/soc/incubator-fineract/build/classes/main/org/apache/fineract/organisation/holiday/domain/HolidayStatusType.java:23: Method java/lang/Enum.valueOf(java.lang.Class, java.lang.String) is not overridden by method with the same name of derived class 'org/apache/fineract/organisation/holiday/domain/HolidayStatusType'.
+Verification completed: 2 reported messages.

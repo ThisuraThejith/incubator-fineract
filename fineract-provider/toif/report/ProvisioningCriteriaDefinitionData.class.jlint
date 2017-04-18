@@ -1,0 +1,3 @@
+/home/chamarap/Desktop/docs/soc/incubator-fineract/build/classes/main/org/apache/fineract/organisation/provisioning/data/ProvisioningCriteriaDefinitionData.java:57: Local variable 'categoryName' shadows component of class 'org/apache/fineract/organisation/provisioning/data/ProvisioningCriteriaDefinitionData'.
+/home/chamarap/Desktop/docs/soc/incubator-fineract/build/classes/main/org/apache/fineract/organisation/provisioning/data/ProvisioningCriteriaDefinitionData.java:57: Local variable 'categoryId' shadows component of class 'org/apache/fineract/organisation/provisioning/data/ProvisioningCriteriaDefinitionData'.
+Verification completed: 2 reported messages.

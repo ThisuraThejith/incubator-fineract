@@ -1,0 +1,6 @@
+/home/chamarap/Desktop/docs/soc/incubator-fineract/build/classes/main/org/apache/fineract/organisation/office/data/OfficeData.java:44: Local variable 'nameDecorated' shadows component of class 'org/apache/fineract/organisation/office/data/OfficeData'.
+/home/chamarap/Desktop/docs/soc/incubator-fineract/build/classes/main/org/apache/fineract/organisation/office/data/OfficeData.java:44: Local variable 'name' shadows component of class 'org/apache/fineract/organisation/office/data/OfficeData'.
+/home/chamarap/Desktop/docs/soc/incubator-fineract/build/classes/main/org/apache/fineract/organisation/office/data/OfficeData.java:44: Local variable 'id' shadows component of class 'org/apache/fineract/organisation/office/data/OfficeData'.
+/home/chamarap/Desktop/docs/soc/incubator-fineract/build/classes/main/org/apache/fineract/organisation/office/data/OfficeData.java:52: Local variable 'allowedParents' shadows component of class 'org/apache/fineract/organisation/office/data/OfficeData'.
+java/lang/Long.java:1: equals() was overridden but not hashCode().
+Verification completed: 5 reported messages.

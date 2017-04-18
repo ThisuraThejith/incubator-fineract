@@ -1,0 +1,2 @@
+/home/chamarap/Desktop/docs/soc/incubator-fineract/build/classes/main/org/apache/fineract/organisation/staff/exception/StaffRoleException.java:27: Method java/lang/Enum.valueOf(java.lang.Class, java.lang.String) is not overridden by method with the same name of derived class 'org/apache/fineract/organisation/staff/exception/StaffRoleException$STAFF_ROLE'.
+Verification completed: 1 reported messages.

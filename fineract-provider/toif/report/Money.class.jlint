@@ -1,0 +1,5 @@
+/home/chamarap/Desktop/docs/soc/incubator-fineract/build/classes/main/org/apache/fineract/organisation/monetary/domain/Money.java:96: Local variable 'inMultiplesOf' shadows component of class 'org/apache/fineract/organisation/monetary/domain/Money'.
+/home/chamarap/Desktop/docs/soc/incubator-fineract/build/classes/main/org/apache/fineract/organisation/monetary/domain/Money.java:1: Zero operand for + operation.
+/home/chamarap/Desktop/docs/soc/incubator-fineract/build/classes/main/org/apache/fineract/organisation/monetary/domain/Money.java:2: Zero operand for + operation.
+java/lang/String.java:3: equals() was overridden but not hashCode().
+Verification completed: 4 reported messages.
