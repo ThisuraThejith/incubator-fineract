@@ -34,6 +34,7 @@ import javax.annotation.PostConstruct;
 import org.apache.fineract.infrastructure.campaigns.sms.constants.SmsCampaignTriggerType;
 import org.apache.fineract.infrastructure.campaigns.sms.domain.SmsCampaign;
 import org.apache.fineract.infrastructure.campaigns.sms.domain.SmsCampaignRepository;
+import org.apache.fineract.infrastructure.campaigns.sms.exception.SmsRuntimeException;
 import org.apache.fineract.infrastructure.sms.domain.SmsMessage;
 import org.apache.fineract.infrastructure.sms.domain.SmsMessageRepository;
 import org.apache.fineract.infrastructure.sms.scheduler.SmsMessageScheduledJobService;
@@ -204,10 +205,12 @@ public class SmsCampaignDomainServiceImpl implements SmsCampaignDomainService {
 										Office campaignOffice = this.officeRepository.findOne(Long.valueOf(value));
 										if (campaignOffice
 												.doesNotHaveAnOfficeInHierarchyWithId(client.getOffice().getId())) {
-											throw new RuntimeException();
+											throw new SmsRuntimeException(
+													SmsRuntimeException.SMS_RUNTIME_EXCEPTION_REASON.NO_OFFICE_WITH_ID);
 										}
 									} else {
-										throw new RuntimeException();
+										throw new SmsRuntimeException(SmsRuntimeException
+												.SMS_RUNTIME_EXCEPTION_REASON.NO_OFFICE_ID);
 									}
 								}
 							}
@@ -258,10 +261,12 @@ public class SmsCampaignDomainServiceImpl implements SmsCampaignDomainService {
 							if (key.equals("officeId")) {
 								Office campaignOffice = this.officeRepository.findOne(Long.valueOf(value));
 								if (campaignOffice.doesNotHaveAnOfficeInHierarchyWithId(client.getOffice().getId())) {
-									throw new RuntimeException();
+									throw new SmsRuntimeException(
+											SmsRuntimeException.SMS_RUNTIME_EXCEPTION_REASON.NO_OFFICE_WITH_ID);
 								}
 							} else {
-								throw new RuntimeException();
+								throw new SmsRuntimeException(
+										SmsRuntimeException.SMS_RUNTIME_EXCEPTION_REASON.NO_OFFICE_ID);
 							}
 						}
 					}
