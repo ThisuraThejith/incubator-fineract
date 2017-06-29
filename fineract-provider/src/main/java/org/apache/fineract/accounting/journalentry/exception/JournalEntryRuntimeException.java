@@ -23,32 +23,7 @@ import org.apache.fineract.infrastructure.core.exception.AbstractPlatformDomainR
 
 public class JournalEntryRuntimeException extends AbstractPlatformDomainRuleException {
 
-    public final static String INVALID_CREDITS = "NO_OFFICE_WITH_ID";
-    public final static String INVALID_DEBITS = "INVALID_DEBITS";
-    /*** enum of reasons for journal runtime exception **/
-    public static enum GL_JOURNAL_ENTRY_RUNTIME_EXCEPTION_REASON {
-        INVALID_CREDITS, INVALID_DEBITS;
-
-        public String errorMessage() {
-            if (name().toString().equalsIgnoreCase(JournalEntryRuntimeException.INVALID_CREDITS)) {
-                return "Invalid Credits.";
-            } else if (name().toString().equalsIgnoreCase(JournalEntryRuntimeException.INVALID_DEBITS)) {
-                return "Invalid Debits";
-            }
-            return name().toString();
-        }
-
-        public String errorCode() {
-            if (name().toString().equalsIgnoreCase(JournalEntryRuntimeException.INVALID_CREDITS)) {
-                return "error.msg.glJournalEntry.invalid.credits";
-            } else if (name().toString().equalsIgnoreCase(JournalEntryRuntimeException.INVALID_DEBITS)) {
-                return "error.msg.glJournalEntry.invalid.debits";
-            }
-            return name().toString();
-        }
-    }
-
-    public JournalEntryRuntimeException(final GL_JOURNAL_ENTRY_RUNTIME_EXCEPTION_REASON reason) {
-        super(reason.errorCode(), reason.errorMessage());
+    public JournalEntryRuntimeException(String errorCode, String errorMessage) {
+        super(errorCode, errorMessage);
     }
 }

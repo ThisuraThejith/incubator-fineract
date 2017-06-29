@@ -258,8 +258,7 @@ public class JournalEntryWritePlatformServiceJpaRepositoryImpl implements Journa
                 }
             }
 			if (credits.length != validCredits.length) {
-				throw new JournalEntryRuntimeException(
-						JournalEntryRuntimeException.GL_JOURNAL_ENTRY_RUNTIME_EXCEPTION_REASON.INVALID_CREDITS);
+				throw new JournalEntryRuntimeException("error.msg.glJournalEntry.invalid.credits", "Invalid Credits.");
 			}
         }
 
@@ -275,8 +274,7 @@ public class JournalEntryWritePlatformServiceJpaRepositoryImpl implements Journa
                 }
 			}
 			if (debits.length != validDebits.length) {
-				throw new JournalEntryRuntimeException(
-						JournalEntryRuntimeException.GL_JOURNAL_ENTRY_RUNTIME_EXCEPTION_REASON.INVALID_DEBITS);
+				throw new JournalEntryRuntimeException("error.msg.glJournalEntry.invalid.debits","Invalid Debits");
 			}
 		}
     }

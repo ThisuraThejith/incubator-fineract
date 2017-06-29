@@ -205,12 +205,12 @@ public class SmsCampaignDomainServiceImpl implements SmsCampaignDomainService {
 										Office campaignOffice = this.officeRepository.findOne(Long.valueOf(value));
 										if (campaignOffice
 												.doesNotHaveAnOfficeInHierarchyWithId(client.getOffice().getId())) {
-											throw new SmsRuntimeException(
-													SmsRuntimeException.SMS_RUNTIME_EXCEPTION_REASON.NO_OFFICE_WITH_ID);
+											throw new SmsRuntimeException("error.msg.no.office",
+													"Office not found for the id");
 										}
 									} else {
-										throw new SmsRuntimeException(SmsRuntimeException
-												.SMS_RUNTIME_EXCEPTION_REASON.NO_OFFICE_ID);
+										throw new SmsRuntimeException("error.msg.no.id.attribute",
+												"Office Id attribute is notfound");
 									}
 								}
 							}
@@ -261,12 +261,12 @@ public class SmsCampaignDomainServiceImpl implements SmsCampaignDomainService {
 							if (key.equals("officeId")) {
 								Office campaignOffice = this.officeRepository.findOne(Long.valueOf(value));
 								if (campaignOffice.doesNotHaveAnOfficeInHierarchyWithId(client.getOffice().getId())) {
-									throw new SmsRuntimeException(
-											SmsRuntimeException.SMS_RUNTIME_EXCEPTION_REASON.NO_OFFICE_WITH_ID);
+									throw new SmsRuntimeException("error.msg.no.office",
+											"Office not found for the id");
 								}
 							} else {
-								throw new SmsRuntimeException(
-										SmsRuntimeException.SMS_RUNTIME_EXCEPTION_REASON.NO_OFFICE_ID);
+								throw new SmsRuntimeException("error.msg.no.id.attribute",
+										"Office Id attribute is notfound");
 							}
 						}
 					}
