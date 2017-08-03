@@ -1,0 +1,9 @@
+The following classes needed for analysis were missing:
+  org.apache.fineract.batch.command.CommandStrategy
+  org.apache.fineract.portfolio.client.api.ClientsApiResource
+  org.apache.fineract.batch.domain.BatchRequest
+  javax.ws.rs.core.UriInfo
+  org.apache.fineract.batch.domain.BatchResponse
+  org.apache.fineract.batch.exception.ErrorHandler
+  org.apache.fineract.batch.exception.ErrorInfo
+Missing classes: 6
